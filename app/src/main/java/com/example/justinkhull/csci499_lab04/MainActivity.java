@@ -3,6 +3,7 @@ package com.example.justinkhull.csci499_lab04;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
+        TextView textview = findViewById(R.id.textView1);
+        AsyncTaskClass asynctask = new AsyncTaskClass(textview);
+        asynctask.execute("https://jsonplaceholder.typicode.com/users");
+
+       /* try {
             myMethod("https://jsonplaceholder.typicode.com/users");
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         URL myUrl = new URL(myString);
         URLConnection myConnection = myUrl.openConnection();
 
-        //InputStreamReader isr = new InputStreamReader(new BufferedReader());
-        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //String newString = br.readLine();
         InputStreamReader isr = new InputStreamReader((myConnection.getInputStream()));
         BufferedReader br = new BufferedReader(isr);
         String newString = br.readLine();
@@ -43,5 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("String", newString);
         return myString;
+    }*/
     }
 }
